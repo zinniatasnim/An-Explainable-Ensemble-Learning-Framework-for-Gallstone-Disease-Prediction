@@ -31,8 +31,6 @@ The dataset contains medical records of **319 subjects** (161 and 158 in the two
 
 The dataset has no missing values and the two classes are almost perfectly balanced.
 
-![Class Distribution](images/class_distribution.png)
-
 ## Installation
 
 ### Prerequisites
@@ -76,17 +74,23 @@ pip install numpy pandas scipy scikit-learn xgboost shap optuna matplotlib seabo
 
 The dataset is split into training (80%, n = 255) and test (20%, n = 64) sets **before** any preprocessing. Log transformation, scaling and correlation filtering are fitted on the training set and then applied unchanged to the test set. Three complementary classifiers are then combined with a weighted hard-voting rule, where the weights are selected on a validation set.
 
-![Methodology](images/methodology.png)
+<p align="center">
+  <img src="images/methodology.png" alt="Methodology" width="650">
+</p>
 
 ### Preprocessing
 
 **Skewness detection.** Features with `|skewness| > 0.4` are log-transformed using `ln(x + 1)`.
 
-![Skewness Distribution](images/skewness_distribution_accross_features.png)
+<p align="center">
+  <img src="images/skewness_distribution_accross_features.png" alt="Skewness Distribution" width="450">
+</p>
 
 **Correlation filtering.** Highly correlated feature pairs (`|r| > 0.9`) are removed. This dropped Extracellular Water, Lean Mass and Muscle Mass, reducing the feature count from 38 to 35.
 
-![Clustered Correlation Heatmap](images/clustered_correlation_heatmap.png)
+<p align="center">
+  <img src="images/clustered_correlation_heatmap.png" alt="Clustered Correlation Heatmap" width="550">
+</p>
 
 ### Ensemble Model
 
@@ -117,25 +121,33 @@ The best weight configuration found by grid search (weights sum to 10) was `[w_L
 | Voting (LR + XGB + MLP) | 0.9062 | 0.9310 | 0.8710 | 0.9000 |
 | **Voting (LR + GB + MLP)** | **0.9219** | **0.9333** | **0.9032** | **0.9180** |
 
-![Model Performance Radar Chart](images/model_performance_spider_plot.png)
+<p align="center">
+  <img src="images/model_performance_spider_plot.png" alt="Model Performance Radar Chart" width="800">
+</p>
 
 ### Confusion Matrices
 
 The LR + GB + MLP ensemble classified 59 of 64 test samples correctly, with 3 false negatives and 2 false positives.
 
-![Confusion Matrices](images/confusion_matrices.png)
+<p align="center">
+  <img src="images/confusion_matrices.png" alt="Confusion Matrices" width="800">
+</p>
 
 ### ROC-AUC
 
 The two voting ensembles reach an AUC of 0.933 (LR + GB + MLP) and 0.935 (LR + XGB + MLP).
 
-![ROC AUC Curve](images/ROC_AUC_Curve.png)
+<p align="center">
+  <img src="images/ROC_AUC_Curve.png" alt="ROC AUC Curve" width="600">
+</p>
 
 ### SHAP Interpretability
 
 SHAP analysis was run on both ensembles. C-Reactive Protein (CRP) is the most influential predictor in both models, followed by Vitamin D and Bone Mass. AST, ECF/TBW, Body Protein Content and Visceral Fat Area also contribute notably. The two models rank features very similarly, which supports the robustness of the framework.
 
-![Top 10 SHAP Features](images/top-10-shap-values.png)
+<p align="center">
+  <img src="images/top-10-shap-values.png" alt="Top 10 SHAP Features" width="800">
+</p>
 
 ### Ablation Study
 
