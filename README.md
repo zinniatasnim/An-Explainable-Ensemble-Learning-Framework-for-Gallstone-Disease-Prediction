@@ -179,6 +179,10 @@ SHAP analysis was run on both ensembles. C-Reactive Protein (CRP) is the most in
 - Repeated cross-validation over multiple random seeds
 - Systematic hyperparameter optimization
 
+## Publication Status
+
+This work was presented at the **2026 IEEE International Conference on Biomedical Engineering, Computer and Information Technology for Health (BECITHCON 2026)**. The paper is pending publication in IEEE Xplore. A link and citation will be added once it is available.
+
 ## License
 
-This project is for academic and research purposes.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
