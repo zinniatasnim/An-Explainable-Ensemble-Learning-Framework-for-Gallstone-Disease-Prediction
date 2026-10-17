@@ -173,7 +173,7 @@ SHAP analysis was run on both ensembles. C-Reactive Protein (CRP) is the most in
 - A single fixed train/test split was used, so results may be sensitive to the split.
 - Baseline classifiers used default hyperparameters.
 
-## Future Work
+## Future Enhancement
 
 - External validation on larger, multi-center datasets
 - Repeated cross-validation over multiple random seeds
